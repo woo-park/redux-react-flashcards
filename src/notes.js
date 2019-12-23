@@ -1,0 +1,5 @@
+/*
+root component is Flashcard.js
+
+
+*/

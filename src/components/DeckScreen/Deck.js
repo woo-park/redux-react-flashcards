@@ -9,10 +9,13 @@ class Deck extends Component {
 
   _review = () => {
     console.warn("_review Not implemented");
+    this.props.review();  //giving err -> trace up
   };
 
   _addCards = () => {
     console.warn("_addCards Not implemented");
+    this.props.add(); //hm nothing happening here
+
   };
 
   render() {

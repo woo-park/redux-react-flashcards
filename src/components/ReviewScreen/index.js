@@ -5,6 +5,9 @@ import { MockReviews } from './../../data/Mocks';
 import { mkReviewSummary } from './ReviewSummary';
 
 class ReviewScreen extends Component{
+
+  static displayName = "ReviewScreen";
+  // static navigationOptions = { title: "Review" };
   constructor(props){
     super(props);
     this.state = {
@@ -28,6 +31,11 @@ class ReviewScreen extends Component{
 
   _quitReviewing = () => {
     console.warn('not implemented');
+    // this.props.navigation.goBack();
+    let goto = document.createElement('a')
+    goto.href = "/Home"
+    goto.click()
+
   }
 
   _contents() {

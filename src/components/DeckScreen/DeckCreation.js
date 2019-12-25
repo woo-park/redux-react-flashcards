@@ -9,8 +9,9 @@ class DeckCreation extends Component {
   }
 
   _newDeck = name => {
-    console.warn("_newDeck creating Not implemented");
+    console.warn("_newDeck creating Not implemented, but name is", name);
     this.setState({ showingNameField: false });
+    this.props.create(name) // method create is being passed down almost 3 times
   };
 
   _showField = () => {
@@ -19,7 +20,7 @@ class DeckCreation extends Component {
 
   render() {
     let contents = this.state.showingNameField
-      ? <EnterDeck create={this._newDeck} />
+    ? <EnterDeck create={this._newDeck} />
       : <CreateDeckButton onPress={this._showField} />;
     return contents;
   }

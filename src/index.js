@@ -4,19 +4,30 @@ import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
 
-import allReducer from './reducers';
+// import allReducer from './reducers';
 import { Provider } from 'react-redux';
-import { createStore } from 'redux';
+import { createStore, applyMiddleware } from 'redux';
 //combines reducers
 import Flashcards from './components/Flashcards'
 
-const store = createStore(allReducer,  window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__());
+import { reducer } from "./reducers/index";
 
 
+function logger({ getState }) {
+  return next => action => {
+    console.log('will dispatch', action);
+    console.log(action.data);
 
+    const returnValue = next(action);
+    // its not being updated
+    console.log('state after dispatch', getState().decks[0].cards);
+    alert('applyMiddleware')  // need this bc its re rendering
 
+    return returnValue
+  }
+}
 
-
+const store = createStore(reducer,applyMiddleware(logger));
 
 
 

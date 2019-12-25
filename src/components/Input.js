@@ -34,8 +34,9 @@ class Input extends Component {
       <div>
         <input
           onChange={this._onChange}
+          onSubmit = {this._onSubmit}
         />
-        <button onClick = {this._onSubmit}>Submit</button>
+
 
       </div>
     )

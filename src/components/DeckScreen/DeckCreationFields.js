@@ -35,7 +35,7 @@ class EnterDeck extends Component {
             this.setState({ text });
           }}
         />
-        <CreateDeckButton onClick={this._create} />
+        <CreateDeckButton onPress={this._create} />
       </div>
     );
   }

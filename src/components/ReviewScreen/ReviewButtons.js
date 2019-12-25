@@ -11,6 +11,7 @@ class ContinueButton extends Component {
       : "Oops, not quite. Next card?";
     return (
       <Button onPress={this.props.onPress} >
+      {/*passing down continueFunc down to Button comp*/}
         <NormalText>{text}</NormalText>
       </Button>
     );
@@ -23,11 +24,11 @@ function mkContinueQuitButtons(
   continueFunc,
   quitFunc
 ) {
-  if (showingAnswer) {
-    return <ContinueButton onClick={continueFunc} wasCorrect={wasCorrect} />;
+  if (showingAnswer) {      //passing onPress to custom btn
+    return <ContinueButton onPress={continueFunc}    wasCorrect={wasCorrect} />;
   } else {
     return (
-      <Button onClick={quitFunc} >
+      <Button onPress={quitFunc} >
         <NormalText>Stop Reviewing</NormalText>
       </Button>
     );
@@ -45,13 +46,13 @@ function mkAnswerButtons(
 
   return answers.map(a => {
     let isCorrectAnswer = a === correctAnswer;
-    
+
     return (
       <Button
         key={a}
         disabled={showingAnswer}
 
-        onClick={() => {
+        onPress ={() => {
           selectAnswerFunc(isCorrectAnswer);
         }}
       >

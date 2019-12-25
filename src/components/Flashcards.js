@@ -46,7 +46,7 @@ class Flashcards extends Component {
 
                     <Route exact path="/Review" component={ReviewScreen} />
 
-                    <Route path="/CardCreation" component={NewCardScreen} />
+                    <Route path="/CardCreation/:deckID" component={NewCardScreen} />
                 </Switch>
         </Router>
 
@@ -56,7 +56,7 @@ class Flashcards extends Component {
     )
   }
 }
-
+    // path: "createCard/:deckID",
 const containerStyle = {
   flex:1
 }

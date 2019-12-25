@@ -22,11 +22,12 @@ async function read(key, deserializer) {
       });
 
       console.log('readvalue =>', readValue)
-      console.log(readValue[0])
-      alert('we got val from localStorage', val)
+      console.log(readValue[0],'readvalue[0]')
+      console.log('we got val from localStorage', val)
       return readValue;
     } else {
-      alert('it is null!!')
+
+      console.log('null')
       console.info(`${key} not found on disk.`);
     }
   } catch (error) {
@@ -39,22 +40,24 @@ async function write(key, item) {
     await localStorage.setItem(key, JSON.stringify(item));
     console.log('successfully saved?')
     console.log(localStorage.getItem(key))
-    alert('checking if successfully saved')
+    alert(`checking if successfully saved  ${localStorage.getItem(key)}` )
+
   } catch (error) {
     console.error("AsyncStorage error: ", error.message);
   }
 }
 
 export const readDecks = () => {
-  alert('we are about to read decks')  // not here at all
+  console.log('we are about to read decks',Deck.fromObject)  // not here at all
   return read(DECK_KEY, Deck.fromObject);
 };
 
 export const writeDecks = decks => {
-  console.log(decks[0],'decksdecks')
-  console.log(decks[1],'decksdecks')
-  console.log(localStorage,'localstore')
-  alert('this is decks -> writeDecks', decks);
+  
+  console.log(decks, 'decks')
+  console.log(decks[0],'decksdecks0')
+  console.log(decks[1],'decksdecks1')
+  console.log(localStorage,'localstorage')
   return write(DECK_KEY, decks);
 };
 

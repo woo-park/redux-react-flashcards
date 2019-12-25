@@ -27,9 +27,9 @@ class DecksScreen extends Component {
 
     console.warn("Data saving not implemented");
 
-    // let goto = document.createElement('a')
-    // goto.href = "/CardCreation"
-    // goto.click()
+    let goto = document.createElement('a')
+    goto.href = `/CardCreation/${createDeckAction.data.id}`
+    goto.click()
   }
 
   _addCards = (deckID) => {
@@ -37,7 +37,7 @@ class DecksScreen extends Component {
     // this.props.navigation.navigate("CardCreation");
 
     let goto = document.createElement('a')
-    goto.href = "/CardCreation"
+    goto.href = `/CardCreation/${deckID}`      //removed :deckID: blah
     goto.click()
   }
 
@@ -88,7 +88,7 @@ class DecksScreen extends Component {
 const mapDispatchToProps = dispatch => {
   return {
     createDeck: deckAction => {
-      alert('DISPATCHING??')
+      console.info('has dispatched from DecksScreen');
       dispatch(deckAction);
     },
     reviewDeck: deckID => {
@@ -98,7 +98,7 @@ const mapDispatchToProps = dispatch => {
 };
 
 const mapStateToProps = state => {
-  console.warn('stateeeeeeee retrie', state)
+  console.warn('retreiving from state to props', state)
   return {
     decks: state.decks,
     counts: state.decks.reduce(

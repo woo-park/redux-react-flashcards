@@ -21,10 +21,14 @@ class NewCard extends Component {
   }
 
   _deckID = () => {
-
+    //need to get that deckID here!
     // return this.props.navigation.state.params.deckID;
     // can't send the deckid with params bc... not using navigation -> but prolly use sessions maybe? if neccessary
-    return 'tempId'
+
+    console.log(this.props.match.params,'params');
+    console.log(this.props.match.params.deckID,'works?');
+    alert()
+    return this.props.match.params.deckID
   };
   // static navigationOptions = { title: "Create Card" };
 
@@ -46,7 +50,7 @@ class NewCard extends Component {
     // console.warn('Not implemented');          //checkpoint1
     // console.warn("Data saving not implemented"); //checkpoint2
     let goto = document.createElement('a')
-    goto.href = "/CardCreation"
+    goto.href = `/CardCreation/${this._deckID()}`
     goto.click()
   }
 
@@ -97,8 +101,14 @@ class NewCard extends Component {
   }
 }
 
+/*
+  dispatch -> action -> reducer -> check type -> change state
+*/
 
 const mapStateToProps = state => {
+  console.log('state new state???',state);
+  console.log('state new state???',state.decks);
+  console.log('state new state???',state.decks[0]);
   return { decks: state.decks };
 };
 
